@@ -8,11 +8,9 @@ import com.Neostox.Base.BasePage;
 
 public final class ScreenshotUtil extends BasePage{
 	
-	static WebDriver driver;
-	
-	public static String getBase64img(WebDriver driver) {
-		ScreenshotUtil.driver = driver;
-		return ((TakesScreenshot)driver).getScreenshotAs(OutputType.BASE64);
+	public static String getBase64img(WebDriver webdriver, String fileWithPath) throws Exception{
+		ScreenshotUtil.driver = webdriver;
+		 return ((TakesScreenshot)webdriver).getScreenshotAs(OutputType.BASE64);
 	}
 
 }

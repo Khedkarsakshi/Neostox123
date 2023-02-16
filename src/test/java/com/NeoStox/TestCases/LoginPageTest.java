@@ -1,5 +1,6 @@
 package com.NeoStox.TestCases;
 
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -7,7 +8,7 @@ import com.Neostox.Base.BasePage;
 import com.Neostox.Pages.LoginPage;
 
 public class LoginPageTest extends BasePage{
-	
+	WebDriver driver;
 	@Test()
 	public void ValiduserLogin() {
 		LoginPage loginpage = new LoginPage(driver);

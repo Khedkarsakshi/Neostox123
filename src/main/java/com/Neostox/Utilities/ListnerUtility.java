@@ -14,11 +14,12 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 
 import java.io.IOException;
 
+import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class ListnerUtility extends BasePage implements ITestListener {
-	
+    WebDriver driver;
 	ExtentReports extent = new ExtentReports();
 	ExtentSparkReporter spark = new ExtentSparkReporter(AppConstant.getsparkreportPath());
 	private Logger logger = LoggerFactory.getLogger(ListnerUtility.class);
@@ -50,7 +51,12 @@ public class ListnerUtility extends BasePage implements ITestListener {
 	public void onTestFailure(ITestResult result) {
 		logger.info("Capturing the screenshot : " + result.getMethod().getDescription());
 		ExtentTest test = extent.createTest(result.getMethod().getDescription());	
-		test.fail(result.getMethod().getMethodName()).addScreenCaptureFromBase64String(ScreenshotUtil.getBase64img(driver));
+		try {
+			test.fail(result.getMethod().getMethodName()).addScreenCaptureFromBase64String(ScreenshotUtil.getBase64img(driver, null));
+		} catch (Exception e1) {
+		// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		test.fail(result.getMethod().getDescription());
 		test.log(Status.FAIL, result.getThrowable());
 		

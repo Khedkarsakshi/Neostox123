@@ -2,6 +2,7 @@ package com.NeoStox.TestCases;
 
 import java.util.Map;
 
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -11,7 +12,7 @@ import com.Neostox.Utilities.CommonActions;
 
 
 public class DashboardPageTest extends BasePage{
-
+    WebDriver driver;
 	DashboardPage dashboardpage;
 	CommonActions commonactions;
 	

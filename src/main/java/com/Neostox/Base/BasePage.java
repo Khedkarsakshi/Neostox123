@@ -1,5 +1,6 @@
 package com.Neostox.Base;
 
+
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
@@ -27,9 +28,9 @@ import org.slf4j.LoggerFactory;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BasePage {
-	
-	public static WebDriver driver;
+	protected static WebDriver driver;
 	private Logger logger = LoggerFactory.getLogger(BasePage.class);
+	
 	
 	@BeforeClass
 	public WebDriver initializeDriver() throws IOException {
@@ -41,20 +42,22 @@ public class BasePage {
 			 driver = new FirefoxDriver();
 		}
 		else if(browserName.equalsIgnoreCase("edge")) {
+			
 			WebDriverManager.edgedriver().setup();
-			 driver = new EdgeDriver();
+			driver = new EdgeDriver();
 		}
 		else if (browserName.equalsIgnoreCase("headless")) {
 			WebDriverManager.chromedriver().setup();
 		    ChromeOptions options = new ChromeOptions();
 		    options.addArguments("--headless");
 		    options.addArguments("window-size=1500, 800");
-		    driver = new ChromeDriver(options);
+		     driver = new ChromeDriver(options);
 		}
 		else {
 			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver();
+			 driver = new ChromeDriver();
 		}
+		
 		logger.info("Initializing " + browserName + " driver");
 		driver.manage().window().maximize();
 		driver.get(PropertiesReader.getValue("url"));
@@ -65,12 +68,17 @@ public class BasePage {
 		return driver;
 	}
 	
+	
+	
 	@AfterClass
+	
 	public void teardown() {
-		driver.quit();
+		  driver.quit();
 		logger.info("Closing driver");
 	}
 	
+	
+
 	@AfterSuite(alwaysRun=true)
 	public void openReport() {
 			try {

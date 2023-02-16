@@ -18,10 +18,9 @@ import org.testng.Assert;
 import com.Neostox.Base.BasePage;
 
 public class CommonActions  extends BasePage{
-	
+	public static WebDriver driver; 
   private Logger logger = LoggerFactory.getLogger(CommonActions.class);
 
-	
 	public void enters_data(String value, WebElement element) {
 		highlightElement(element);
 		logger.info("Entering text : " + value);

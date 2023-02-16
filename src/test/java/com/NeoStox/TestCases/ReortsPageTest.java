@@ -1,5 +1,6 @@
 package com.NeoStox.TestCases;
 
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -8,6 +9,7 @@ import com.Neostox.Pages.ReportsPage;
 import com.Neostox.Utilities.CommonActions;
 
 public class ReortsPageTest extends BasePage{
+	WebDriver driver;
 	CommonActions commonactions;
 	ReportsPage reportsPage;
 	
